@@ -4,9 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --exec babel-node src/init.js",
-    "client": "webpack --config webpack.config.js",
-    "build": "webpack"
+    "start": "node build/init.js",
+    "build:server": "babel src -d build",
+    "build:assets": "webpack --mode=production",
+    "build": "npm run build:server && npm run build:assets",
+    "dev:server": "nodemon",
+    "dev:assets": "webpack --mode=development -w"
   },
   "author": "",
   "license": "ISC",
@@ -25,7 +28,8 @@
     "regenerator-runtime": "^0.13.11"
   },
   "devDependencies": {
-    "@babel/core": "^7.21.4",
+    "@babel/cli": "^7.22.5",
+    "@babel/core": "^7.22.5",
     "@babel/node": "^7.20.7",
     "@babel/preset-env": "^7.21.4",
     "@prettier/plugin-pug": "^2.4.2",
