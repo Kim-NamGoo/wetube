@@ -1,0 +1,34 @@
+extends base
+
+block content
+  if errorMessege
+    h4= errorMessege
+  img(src=`/${user.avatarUrl}`, width="100", height="100") 
+  form(method="POST", enctype="multipart/form-data")
+    label(for="avatar") Avatar
+    input#avatar(type="file", name="avatar", accept="image/*") 
+    input(
+      name="name",
+      type="text",
+      placeholder="Name",
+      value=`${user.name}`,
+      required
+    ) 
+    input(
+      name="username",
+      type="text",
+      placeholder="Username",
+      value=`${user.username}`,
+      required
+    ) 
+    input(
+      name="email",
+      type="email",
+      placeholder="Email",
+      value=`${user.email}`,
+      required
+    ) 
+    input(type="submit", value="Update Profile")
+    hr
+    if !user.githubLoggedIn
+      a(href="change-password") 비밀번호 변경

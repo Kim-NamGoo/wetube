@@ -1,0 +1,14 @@
+extends base.pug
+
+block content
+  h3 Change Title of video
+  form(method="POST")
+    input(name="title", value="Video title", placeholder="Video Title")
+    input(
+      name="description",
+      value="Description",
+      placeholder="Video Description",
+      type
+    )
+    input(name="hashtags", value=`${video.hashtags}`, placeholder="Hashtags")
+    input(type="submit", value="Save")

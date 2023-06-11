@@ -1,0 +1,11 @@
+extends base
+include mixins/video
+
+block content
+  h3= pageTitle
+  form(method="GET")
+    input(name="keyword", type="text", placeholder="Search By Title")
+    input(type="submit", value="검색")
+  div
+    each item in newArr 
+      +video(item)

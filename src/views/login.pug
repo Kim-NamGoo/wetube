@@ -1,0 +1,11 @@
+extends base
+
+block content
+  if errorMessege
+    h3= errorMessege
+  form(method="POST")
+    input(name="username", type="text", required, placeholder="Username") 
+    input(name="password", type="password", required, placeholder="Password") 
+    input(type="submit", value="로그인") 
+  br
+  a(href="/users/github/start") Login with Githhub

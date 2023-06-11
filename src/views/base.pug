@@ -1,0 +1,43 @@
+doctype html
+html(lang="ko")
+  head
+    title #{ pageTitle } | Wetube
+    link(rel="stylesheet", href="/static/css/styles.css")
+    link(
+      rel="stylesheet",
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    )
+
+  body
+    if messages.error
+      span= messages.error
+    header
+      h1= pageTitle
+
+    main
+      nav
+        ul
+          li
+            a(href="/") Home
+          if loggedIn
+            li
+              a(href="/users/logout") Logout
+            li
+              a(href=`/users/${user._id}`) #{ user.name }의 프로필
+            li
+              a(href="/users/edit") 프로필 편집
+            li
+              a(href="/videos/upload") Upload Video
+
+          li
+            a(href="/search") Search
+          if !loggedIn
+            li
+              a(href="/login") Login
+            li
+              a(href="/Join") Join
+
+      block content
+  include partials/footer.pug
+  block scripts
+  script(src="/static/js/main.js") 
